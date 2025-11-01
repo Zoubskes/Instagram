@@ -25,8 +25,8 @@
                     <!-- Stats -->
                     <div class="flex gap-6 mt-4">
                         <p><span class="font-semibold">{{$user->posts()->count()}}</span> posts</p>
-                        <p><span class="font-semibold">2.3k</span> followers</p>
-                        <p><span class="font-semibold">512</span> following</p>
+                        <p><span class="font-semibold">0</span> followers</p>
+                        <p><span class="font-semibold">0</span> following</p>
                     </div>
 
                     <!-- Bio -->
