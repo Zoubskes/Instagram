@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $posts = Post::all();
+    $posts = Post::all()->sortByDesc('created_at');
     $users = User::latest()->paginate(5);
     return view('welcome', [
         'posts' => $posts,
