@@ -25,8 +25,37 @@
 
                 <img class="h-[500px]" src="{{ asset('storage/' . $post->image) }}" alt="Post image">
                 <div class="flex mt-2 pb-4">
-                    <span class="text-2xl cursor-pointer">❤️</span>
-                    <span class="text-2xl ml-4 cursor-pointer">💬</span>
+                    <span class="text-2xl cursor-pointer"><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-8 h-8 text-gray-700 hover:text-red-500 transition-colors"
+                        >
+  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+</svg>
+</span>
+                    <span class="text-2xl ml-4 cursor-pointer"><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="w-8 h-8 text-gray-700 hover:text-gray-900 transition-colors"
+                        >
+  <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4A8.5 8.5 0 0 1 12 20a8.38 8.38 0 0 1-3.6-.8L3 21l1.4-4.2A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z" />
+</svg>
+</span>
+                </div>
+                <p class="font-bold">0 vind-ik-leuks</p>
+                <div class="flex space-x-2 mt-2">
+                <p class="font-bold">{{$post->user['name']}}</p>
+                <p>{{$post->caption}}</p>
                 </div>
         </div>
         @endforeach
