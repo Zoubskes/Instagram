@@ -14,7 +14,7 @@
                     @if(!$post->user['image'])
                         <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('images/profilepic.jpg')}}" alt="">
                     @elseif($post->user['image'])
-                        <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('storage/' . $post->user['image'])}}" alt="">
+                        <img class="w-8 h-8 rounded-full bg-gray-300" src="{{Str::startsWith($post->user['image'], 'http') ? $post->user['image'] :   asset('storage/' . $post->user['image'])}}" alt="">
                     @endif
                     <p class="content-center ml-2">{{$post->user['name']}}</p>
 
@@ -23,7 +23,9 @@
                 </div>
                 </a>
 
-                <img class="h-[500px]" src="{{ asset('storage/' . $post->image) }}" alt="Post image">
+                <img src="{{ Str::startsWith($post->image, 'http') ? $post->image : asset('storage/' . $post->image) }}"
+                     alt="post image"
+                     class="rounded-lg w-full max-w-md">
                 <div class="flex mt-2 pb-4">
                     <span class="text-2xl cursor-pointer"><svg
                             xmlns="http://www.w3.org/2000/svg"

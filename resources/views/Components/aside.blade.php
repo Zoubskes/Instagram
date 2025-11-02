@@ -16,7 +16,7 @@
         @if(!$user->image)
             <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('images/profilepic.jpg') }}" alt="">
         @elseif($user->image)
-            <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('storage/' . $user->image) }}" alt="">
+            <img class="w-8 h-8 rounded-full bg-gray-300" src="{{Str::startsWith($user->image, 'http') ? $user->image :   asset('storage/' . $user->image)}}" alt="">
         @endif
 
         <div class="ml-3">

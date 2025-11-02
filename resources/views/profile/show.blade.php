@@ -12,7 +12,7 @@
                      alt="Profile picture"
                      class="w-32 h-32 rounded-full object-cover border border-gray-300">
                 @elseif($user->image)
-                    <img src="{{asset('storage/' . $user->image) }}"
+                    <img src="{{Str::startsWith($user->image, 'http') ? $user->image :   asset('storage/' . $user->image)}}"
                          alt="Profile picture"
                          class="w-32 h-32 rounded-full object-cover border border-gray-300">
                 @endif
@@ -48,8 +48,8 @@
                 <div class="grid grid-cols-3 gap-1 sm:gap-2">
 
                     @foreach($posts as $post)
-                        <img src="{{ asset('storage/' . $post->image) }}"
-                                    alt="Post image">
+                        <img src="{{ Str::startsWith($post->image, 'http') ? $post->image : asset('storage/' . $post->image) }}"
+                             alt="post image">
                     @endforeach
 
                 </div>
