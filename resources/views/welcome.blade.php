@@ -11,8 +11,11 @@
                 <a href="/profile/{{$post->user['id']}}">
                 <div class="flex pb-2">
 
-                        <img class="w-8 h-8 rounded-full bg-gray-300" src="https://i.pravatar.cc/150?img=8">
-
+                    @if(!$post->user['image'])
+                        <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('images/profilepic.jpg')}}" alt="">
+                    @elseif($post->user['image'])
+                        <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('storage/' . $post->user['image'])}}" alt="">
+                    @endif
                     <p class="content-center ml-2">{{$post->user['name']}}</p>
 
                     <div class="flex">

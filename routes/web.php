@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Models\Post;
@@ -30,14 +31,8 @@ Route::get('/create', [PostController::class, 'create']);
 Route::post('/create', [PostController::class, 'store']);
 
 // Profile
-Route::get('/profile/{user}', function(User $user){
-    $users = User::latest()->paginate(5);
-    $posts = $user->posts()->get();
-
-    return view('profile.show', [
-        'user' => $user,
-        'posts' => $posts,
-        'users' => $users,
-
-    ]);
-});
+Route::get('/profile/{user}', [ProfileController::class, 'show']);
+Route::get('/profile/{user}/edit', [ProfileController::class, 'edit']);
+Route::patch('/profile/{user}', [ProfileController::class, 'update'])
+->middleware(['auth'])
+->can('edit-user', 'user');

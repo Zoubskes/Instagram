@@ -7,18 +7,25 @@
             <!-- Profile Header -->
             <section class="flex flex-col sm:flex-row items-center sm:items-start gap-8 border-b border-b-gray-500 pb-6">
                 <!-- Profile Picture -->
-                <img src="https://i.pravatar.cc/150?img=8"
+                @if(!$user->image)
+                <img src="{{asset('images/profilepic.jpg') }}"
                      alt="Profile picture"
                      class="w-32 h-32 rounded-full object-cover border border-gray-300">
+                @elseif($user->image)
+                    <img src="{{asset('storage/' . $user->image) }}"
+                         alt="Profile picture"
+                         class="w-32 h-32 rounded-full object-cover border border-gray-300">
+                @endif
+
 
                 <!-- Profile Info -->
                 <div class="flex-1">
                     <div class="flex flex-col sm:flex-row items-center sm:items-center sm:gap-6">
                         <h2 class="text-2xl font-semibold">{{$user->name}}</h2>
                         @if(auth()->id() == $user->id)
-                        <button class="mt-2 sm:mt-0 border px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-gray-100">
+                        <a href="/profile/{{$user->id}}/edit" class="mt-2 sm:mt-0 border px-3 py-1.5 rounded-md text-sm font-semibold hover:bg-gray-100">
                             Edit Profile
-                        </button>
+                        </a>
                         @endif
                     </div>
 
@@ -31,7 +38,7 @@
 
                     <!-- Bio -->
                     <div class="mt-4">
-                        <p class="text-sm">Soon..</p>
+                        <p class="text-sm">{{$user->bio}}</p>
                     </div>
                 </div>
             </section>

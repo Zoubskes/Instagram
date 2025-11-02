@@ -13,8 +13,11 @@
     @foreach($users as $user)
         <a href="/profile/{{$user->id}}">
     <div class="flex items-center mb-1 p-3 hover:bg-gray-100 rounded-lg">
-
-        <img class="w-8 h-8 rounded-full bg-gray-300" src="https://i.pravatar.cc/150?img=8">
+        @if(!$user->image)
+            <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('images/profilepic.jpg') }}" alt="">
+        @elseif($user->image)
+            <img class="w-8 h-8 rounded-full bg-gray-300" src="{{asset('storage/' . $user->image) }}" alt="">
+        @endif
 
         <div class="ml-3">
 
